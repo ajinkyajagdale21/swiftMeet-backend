@@ -5,10 +5,9 @@ import cors from 'cors'
 
 dotenv.config();
 
-const createToken = () => {
+const createToken = (roomName,participantName) => {
 
-  const roomName = 'swift Room';
-  const participantName = 'Ajinkya';
+  console.log(participantName);
 
   const at = new AccessToken(process.env.ENV_API_KEY, process.env.ENV_API_SECRET, {
     identity: participantName,
@@ -37,7 +36,9 @@ app.use(cors(corsOptions));
 
 
 app.get('/getToken', (req, res) => {
-  res.send(createToken());
+ 
+  const { roomName, participantName} = req.query;
+  res.send(createToken(roomName,participantName));
 });
 
 app.listen(port, () => {
