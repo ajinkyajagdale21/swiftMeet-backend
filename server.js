@@ -12,8 +12,6 @@ dotenv.config();
 
 const createToken = (roomName,participantName) => {
 
-  console.log(participantName);
-
   const at = new AccessToken(process.env.ENV_API_KEY, process.env.ENV_API_SECRET, {
     identity: participantName,
   });
